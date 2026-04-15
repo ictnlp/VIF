@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=80.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llava_vif"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+]
+dependencies = [
+    "torch==2.8.0+cu128", "torchvision==0.23.0+cu128",
+    "transformers==4.40.0", "tokenizers==0.19.1", "deepspeed==0.18.4",
+    "accelerate==0.29.3", "peft==0.4.0", "bitsandbytes==0.49.1",
+    "pydantic", "markdown2[all]", "numpy", "scikit-learn",
+    "sentencepiece", "shortuuid", "gradio", "gradio_client",
+    "requests", "httpx", "uvicorn", "fastapi",
+    "einops", "einops-exts", "timm",
+]
+
+[project.optional-dependencies]
+train = ["ninja", "wandb"]
+build = ["build", "twine"]
+
+[tool.setuptools.packages.find]
+exclude = ["assets*", "benchmark*", "docs", "dist*", "playground*", "scripts*", "tests*"]
+
+[tool.wheel]
+exclude = ["assets*", "benchmark*", "docs", "dist*", "playground*", "scripts*", "tests*"]
